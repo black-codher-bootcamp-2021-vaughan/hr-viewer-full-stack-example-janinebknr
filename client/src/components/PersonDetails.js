@@ -17,7 +17,7 @@ const PersonDetails = () => {
   }, [fetchPerson]);
 
   function onDeleteClick(id) {
-    fetch("http://localhost:3000/api/people/" + id, {
+    fetch("http://localhost:3000/" + id, {
       method: "DELETE",
     })
       .then((res) => {
