@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "../App.css";
 
 const PersonDetails = () => {
   const { id } = useParams();
   let [person, setPerson] = useState();
+  const navigate = useNavigate();
 
   const fetchPerson = useCallback(async () => {
     let response = await fetch("http://localhost:8080/api/people/" + id);
@@ -21,7 +22,7 @@ const PersonDetails = () => {
       method: "DELETE",
     })
       .then((res) => {
-        this.props.history.push("/");
+        navigate("/");
       })
       .catch((err) => {
         console.log("Error form PersonDetail_deleteClick");
